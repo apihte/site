@@ -41,6 +41,12 @@ select distinct colname from table;
 
 
 
+### 创建索引
+
+create index xxx on table();
+
+
+
 
 
 ## InnoDB 和 MyISAM
