@@ -61,10 +61,41 @@ private State state;
 ### recordLockey
 
 ```java
-private Lockey recordLockey
+private Lockey recordLockey;
 ```
 
 持有的记录锁
 
 [^lockey 和 recordLockey 的区别]: 
 
+### lastAccessTime
+
+```java
+private volatile long lastAccessTime = System.nanoTime();
+```
+
+## 成员方法
+
+### getTable
+
+```java
+final TTable<K, V> getTable() {
+    @SuppressWarnings("unchecked")
+    TTable<K, V> table = (TTable<K, V>)xdbParent();
+    return table;
+}
+```
+
+获取表实例
+
+### getKey
+
+```java
+public final K getKey() {
+    @SuppressWarnings("unchecked")
+    K key = (K)lockey.getKey();
+    return key;
+}
+```
+
+获取 key
