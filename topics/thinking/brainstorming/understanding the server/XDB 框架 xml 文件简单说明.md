@@ -55,8 +55,17 @@ bean 为定义 Java Bean 类结构，结构可以嵌套
 
 protocol 为定义协议类，协议类中的 type 为协议 id，maxsize 为协议最大大小，tolua 为是否生成 lua 代码
 
-- C 开头的协议为客户端发往服务器的协议
-- S 开头的协议为服务器发往客户端的协议
+- C 开头的协议为客户端发往服务器的协议，简称 C 协议
+
+  服务器收到客户端发送的协议后，会根据协议 id 最终调用到服务器相关的 C 协议的 process 方法中
+
+  比如客户端发送了 cequipment 协议到服务器，那么服务器会调用到 CEquipment.process 方法，我们把对客户端的响应逻辑写到这个 process 方法中
+
+- S 开头的协议为服务器发往客户端的协议，简称 S 协议
+
+  一般来说，S 协议都是服务器收到客户端的操作请求后，对这个请求执行一系列逻辑后返回的结果。也有例外情况，比如服务器向客户端主动推送怪物信息、怪物坐标方向等。
+
+  S 协议的作用就是发送给客户端，使用的时候直接 new 一个新的对象，给这个对象中的类属性赋值，然后通过 xdb.Procedure.psendWhileCommit 或者 game.link.net.Onlines.getInstance().send 方法发送出去，前者需要在事务中使用，后者不需要，当然最好是使用工具类中的方法 CommUtil.psendWhileCommit
 
 variable 为定义类属性
 
