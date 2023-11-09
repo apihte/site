@@ -1,5 +1,0 @@
-transaction
-
-procedure
-
-checkpoint
