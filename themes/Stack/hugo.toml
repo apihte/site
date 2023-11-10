@@ -1,6 +1,6 @@
-baseURL = 'https://apihte.github.io/site'
-languageCode = 'zh-CN'
-title = "Apihte's Site"
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
 
 [[menus.main]]
 name = 'Home'
@@ -9,7 +9,7 @@ weight = 10
 
 [[menus.main]]
 name = 'Posts'
-pageRef = '/content'
+pageRef = '/posts'
 weight = 20
 
 [[menus.main]]
