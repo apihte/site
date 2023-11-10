@@ -1,7 +1,6 @@
 +++
 title = '升级 docker mariadb 版本.md'
 date = 2023-11-09T15:56:46+08:00
-draft = true
 +++
 
 # 升级 docker mariadb 版本
